@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SKLEPModelStoreContainer" CdmEntityContainer="SKLEPEntities1">
+    <EntitySetMapping Name="Drukarki">
+      <EntityTypeMapping TypeName="SKLEPModel.Drukarki">
+        <MappingFragment StoreEntitySet="Drukarki">
+          <ScalarProperty Name="model" ColumnName="model" />
+          <ScalarProperty Name="typ" ColumnName="typ" />
+          <ScalarProperty Name="cena" ColumnName="cena" />
+          <ScalarProperty Name="kolor_boolean" ColumnName="kolor_boolean" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Laptop">
+      <EntityTypeMapping TypeName="SKLEPModel.Laptop">
+        <MappingFragment StoreEntitySet="Laptop">
+          <ScalarProperty Name="model" ColumnName="model" />
+          <ScalarProperty Name="procesor" ColumnName="procesor" />
+          <ScalarProperty Name="ram" ColumnName="ram" />
+          <ScalarProperty Name="hdd" ColumnName="hdd" />
+          <ScalarProperty Name="ekran" ColumnName="ekran" />
+          <ScalarProperty Name="cena" ColumnName="cena" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PC">
+      <EntityTypeMapping TypeName="SKLEPModel.PC">
+        <MappingFragment StoreEntitySet="PC">
+          <ScalarProperty Name="model" ColumnName="model" />
+          <ScalarProperty Name="procesor" ColumnName="procesor" />
+          <ScalarProperty Name="ram" ColumnName="ram" />
+          <ScalarProperty Name="hdd" ColumnName="hdd" />
+          <ScalarProperty Name="cd" ColumnName="cd" />
+          <ScalarProperty Name="ekran" ColumnName="ekran" />
+          <ScalarProperty Name="cena" ColumnName="cena" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Produkty">
+      <EntityTypeMapping TypeName="SKLEPModel.Produkty">
+        <MappingFragment StoreEntitySet="Produkty">
+          <ScalarProperty Name="producent" ColumnName="producent" />
+          <ScalarProperty Name="model" ColumnName="model" />
+          <ScalarProperty Name="typ" ColumnName="typ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

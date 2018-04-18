@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SKLEPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Drukarki">
+    <Key>
+      <PropertyRef Name="model" />
+    </Key>
+    <Property Name="model" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="typ" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="cena" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="kolor_boolean" Type="Boolean" />
+    <NavigationProperty Name="Produkty" Relationship="Self.FK__Drukarki__model__3C69FB99" FromRole="Drukarki" ToRole="Produkty" />
+  </EntityType>
+  <EntityType Name="Laptop">
+    <Key>
+      <PropertyRef Name="model" />
+    </Key>
+    <Property Name="model" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="procesor" Type="Int32" Nullable="false" />
+    <Property Name="ram" Type="Int32" Nullable="false" />
+    <Property Name="hdd" Type="Int32" Nullable="false" />
+    <Property Name="ekran" Type="Int32" Nullable="false" />
+    <Property Name="cena" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="Produkty" Relationship="Self.FK__Laptop__model__3A81B327" FromRole="Laptop" ToRole="Produkty" />
+  </EntityType>
+  <EntityType Name="PC">
+    <Key>
+      <PropertyRef Name="model" />
+    </Key>
+    <Property Name="model" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="procesor" Type="Int32" Nullable="false" />
+    <Property Name="ram" Type="Int32" Nullable="false" />
+    <Property Name="hdd" Type="Int32" Nullable="false" />
+    <Property Name="cd" Type="Int32" Nullable="false" />
+    <Property Name="ekran" Type="Int32" Nullable="false" />
+    <Property Name="cena" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="Produkty" Relationship="Self.FK__PC__model__38996AB5" FromRole="PC" ToRole="Produkty" />
+  </EntityType>
+  <EntityType Name="Produkty">
+    <Key>
+      <PropertyRef Name="model" />
+    </Key>
+    <Property Name="producent" Type="String" MaxLength="25" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="model" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="typ" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Drukarki" Relationship="Self.FK__Drukarki__model__3C69FB99" FromRole="Produkty" ToRole="Drukarki" />
+    <NavigationProperty Name="Laptop" Relationship="Self.FK__Laptop__model__3A81B327" FromRole="Produkty" ToRole="Laptop" />
+    <NavigationProperty Name="PC" Relationship="Self.FK__PC__model__38996AB5" FromRole="Produkty" ToRole="PC" />
+  </EntityType>
+  <Association Name="FK__Drukarki__model__3C69FB99">
+    <End Role="Produkty" Type="Self.Produkty" Multiplicity="1" />
+    <End Role="Drukarki" Type="Self.Drukarki" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Produkty">
+        <PropertyRef Name="model" />
+      </Principal>
+      <Dependent Role="Drukarki">
+        <PropertyRef Name="model" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Laptop__model__3A81B327">
+    <End Role="Produkty" Type="Self.Produkty" Multiplicity="1" />
+    <End Role="Laptop" Type="Self.Laptop" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Produkty">
+        <PropertyRef Name="model" />
+      </Principal>
+      <Dependent Role="Laptop">
+        <PropertyRef Name="model" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PC__model__38996AB5">
+    <End Role="Produkty" Type="Self.Produkty" Multiplicity="1" />
+    <End Role="PC" Type="Self.PC" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Produkty">
+        <PropertyRef Name="model" />
+      </Principal>
+      <Dependent Role="PC">
+        <PropertyRef Name="model" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SKLEPEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Drukarki" EntityType="Self.Drukarki" />
+    <EntitySet Name="Laptop" EntityType="Self.Laptop" />
+    <EntitySet Name="PC" EntityType="Self.PC" />
+    <EntitySet Name="Produkty" EntityType="Self.Produkty" />
+    <AssociationSet Name="FK__Drukarki__model__3C69FB99" Association="Self.FK__Drukarki__model__3C69FB99">
+      <End Role="Produkty" EntitySet="Produkty" />
+      <End Role="Drukarki" EntitySet="Drukarki" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Laptop__model__3A81B327" Association="Self.FK__Laptop__model__3A81B327">
+      <End Role="Produkty" EntitySet="Produkty" />
+      <End Role="Laptop" EntitySet="Laptop" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PC__model__38996AB5" Association="Self.FK__PC__model__38996AB5">
+      <End Role="Produkty" EntitySet="Produkty" />
+      <End Role="PC" EntitySet="PC" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
